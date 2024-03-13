@@ -15,6 +15,7 @@ function [labels] = AccuSleep_classify(EEG, EMG, net, SR, epochLen, calibrationD
 %       createCalibrationData.m
 %   minBoutLen (optional) - minimum length (sec) of a bout of any brain state
 
+disp("classify started")
 if nargin < 7
    minBoutLen = 0; 
 end
@@ -58,6 +59,8 @@ processedEMG(processedEMG > 1)=1;
 s(s < 0)=0;
 s(s > 1)=1;
 
+disp("done with spect")
+
 % find how much time on either side of central timepoint to include
 % this is based on the size of the trained network.
 pad = round((net.Layers(1,1).InputSize(1) - 1)/2);
@@ -76,7 +79,10 @@ end
 
 % classify
 X = uint8(X.*255);
-labels = double(classify(net,X))';
+
+%labels = double(classify(net,X))';
+preds      = double(predict(net,double(X)))';
+[p,labels] = max(preds); 
 
 % put labels in correct orientation
 if isrow(labels)

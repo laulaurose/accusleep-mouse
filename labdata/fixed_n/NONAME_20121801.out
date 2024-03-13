@@ -1,0 +1,93 @@
+/zhome/dd/4/109414/.lsbatch/1707667345.20121801.shell: line 1: clc: command not found
+TERM environment variable not set.
+/zhome/dd/4/109414/.lsbatch/1707667345.20121801.shell: line 3: fg: no job control
+/zhome/dd/4/109414/.lsbatch/1707667345.20121801.shell: line 4: syntax error near unexpected token `genpath'
+/zhome/dd/4/109414/.lsbatch/1707667345.20121801.shell: line 4: `addpath(genpath("/zhome/dd/4/109414/Validationstudy/accusleep_v2/"))'
+
+------------------------------------------------------------
+Sender: LSF System <lsfadmin@hpc.dtu.dk>
+Subject: Job 20121801: <NONAME> in cluster <dcc> Exited
+
+Job <NONAME> was submitted from host <hpclogin1> by user <laurose> in cluster <dcc> at Sun Feb 11 17:02:25 2024
+Job was executed on host(s) <n-62-31-4>, in queue <hpc>, as user <laurose> in cluster <dcc> at Sun Feb 11 17:02:27 2024
+</zhome/dd/4/109414> was used as the home directory.
+</zhome/dd/4/109414/Validationstudy/accusleep_v2/AccuSleep/labdata/fixed_n> was used as the working directory.
+Started at Sun Feb 11 17:02:27 2024
+Terminated at Sun Feb 11 17:02:28 2024
+Results reported at Sun Feb 11 17:02:28 2024
+
+Your job looked like:
+
+------------------------------------------------------------
+# LSBATCH: User input
+clc; 
+clear all; 
+% subsetSize = 107760*1/4;
+addpath(genpath("/zhome/dd/4/109414/Validationstudy/accusleep_v2/"))
+
+%imageLocation1 = '/work3/laurose/accusleep/data/labAlessandro/training_images_2024-01-25_16-02-37/';
+% imageLocation2 = '/work3/laurose/accusleep/data/labAntoine/training_images_2024-01-25_16-17-23/';
+% imageLocation3 = '/work3/laurose/accusleep/data/labKornum/training_images_2024-01-25_16-17-51/';
+% imageLocation4 = '/work3/laurose/accusleep/data/labMaiken/training_images_2024-01-25_16-02-33/';
+% imageLocation5 = '/work3/laurose/accusleep/data/labSebastian/training_images_2024-01-25_16-04-36/';
+% 
+% % 1) Load data for each imageLocation ! 
+% imds1 = imageDatastore(imageLocation2, 'IncludeSubfolders',true,'LabelSource','foldernames');
+% imds2 = imageDatastore(imageLocation3, 'IncludeSubfolders',true,'LabelSource','foldernames');
+% imds3 = imageDatastore(imageLocation4, 'IncludeSubfolders',true,'LabelSource','foldernames');
+% imds4 = imageDatastore(imageLocation5, 'IncludeSubfolders',true,'LabelSource','foldernames');
+% 
+% disp("done loading imds")
+% allFiles1 = imds1.Files;
+% allFiles2 = imds2.Files;
+% allFiles3 = imds3.Files;
+% allFiles4 = imds4.Files;
+% 
+% % Randomly sampling;
+% randomIndices1 = randperm(length(allFiles1), subsetSize);
+% randomIndices2 = randperm(length(allFiles2), subsetSize);
+% randomIndices3 = randperm(length(allFiles3), subsetSize);
+% randomIndices4 = randperm(length(allFiles4), subsetSize);
+% 
+% % Split into training and validation set 
+% train_1 = allFiles1(randomIndices1(1:subsetSize*0.8));
+% train_2 = allFiles2(randomIndices2(1:subsetSize*0.8));
+% train_3 = allFiles3(randomIndices3(1:subsetSize*0.8));
+% train_4 = allFiles4(randomIndices4(1:subsetSize*0.8));
+% 
+% val_1   = allFiles1(randomIndices1(subsetSize*0.8+1:end));
+% val_2   = allFiles2(randomIndices2(subsetSize*0.8+1:end));
+% val_3   = allFiles3(randomIndices3(subsetSize*0.8+1:end));
+% val_4   = allFiles4(randomIndices4(subsetSize*0.8+1:end));
+% 
+% imdsTrain1      = imageDatastore(train_1, 'Labels', imds1.Labels(randomIndices1(1:subsetSize*0.8)));
+% imdsTrain2      = imageDatastore(train_2, 'Labels', imds2.Labels(randomIndices2(1:subsetSize*0.8)));
+% imdsTrain3      = imageDatastore(train_3, 'Labels', imds3.Labels(randomIndices3(1:subsetSize*0.8)));
+% imdsTrain4      = imageDatastore(train_4, 'Labels', imds4.Labels(randomIndices4(1:subsetSize*0.8)));
+% 
+% imdsVal1        = imageDatastore(val_1, 'Labels', imds1.Labels(randomIndices1(subsetSize*0.8+1:end)));
+% imdsVal2        = imageDatastore(val_2, 'Labels', imds2.Labels(randomIndices2(subsetSize*0.8+1:end)));
+% imdsVal3        = imageDatastore(val_3, 'Labels', imds3.Labels(randomIndices3(subsetSize*0.8+1:end)));
+% imdsVal4        = imageDatastore(val_4, 'Labels', imds4.Labels(randomIndices4(subsetSize*0.8+1:end)));
+% 
+
+(... more ...)
+------------------------------------------------------------
+
+Exited with exit code 2.
+
+Resource usage summary:
+
+    CPU time :                                   0.31 sec.
+    Max Memory :                                 -
+    Average Memory :                             -
+    Total Requested Memory :                     1024.00 MB
+    Delta Memory :                               -
+    Max Swap :                                   -
+    Max Processes :                              -
+    Max Threads :                                -
+    Run time :                                   1 sec.
+    Turnaround time :                            3 sec.
+
+The output (if any) is above this job summary.
+

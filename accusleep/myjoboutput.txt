@@ -1,0 +1,313 @@
+  dlnetwork with properties:
+
+         Layers: [14x1 nnet.cnn.layer.Layer]
+    Connections: [13x2 table]
+     Learnables: [14x3 table]
+          State: [6x3 table]
+     InputNames: {'imageinput'}
+    OutputNames: {'softmax'}
+    Initialized: 1
+
+  View summary with <a href="matlab: helpPopup dlnetwork/summary" style="font-weight:normal">summary</a>.
+
+testing starting
+classify started
+done with spect
+classify started
+done with spect
+classify started
+done with spect
+classify started
+done with spect
+classify started
+done with spect
+classify started
+done with spect
+classify started
+done with spect
+classify started
+done with spect
+classify started
+done with spect
+classify started
+done with spect
+testing starting
+classify started
+done with spect
+classify started
+done with spect
+classify started
+done with spect
+classify started
+done with spect
+classify started
+done with spect
+classify started
+done with spect
+classify started
+done with spect
+classify started
+done with spect
+classify started
+done with spect
+classify started
+done with spect
+classify started
+done with spect
+classify started
+done with spect
+classify started
+done with spect
+classify started
+done with spect
+classify started
+done with spect
+classify started
+done with spect
+classify started
+done with spect
+classify started
+done with spect
+classify started
+done with spect
+classify started
+done with spect
+classify started
+done with spect
+classify started
+done with spect
+classify started
+done with spect
+classify started
+done with spect
+classify started
+done with spect
+classify started
+done with spect
+classify started
+done with spect
+classify started
+done with spect
+classify started
+done with spect
+classify started
+done with spect
+classify started
+done with spect
+classify started
+done with spect
+classify started
+done with spect
+classify started
+done with spect
+testing starting
+classify started
+done with spect
+classify started
+done with spect
+classify started
+done with spect
+classify started
+done with spect
+classify started
+done with spect
+classify started
+done with spect
+classify started
+done with spect
+classify started
+done with spect
+classify started
+done with spect
+classify started
+done with spect
+classify started
+done with spect
+classify started
+done with spect
+classify started
+done with spect
+classify started
+done with spect
+classify started
+done with spect
+classify started
+done with spect
+classify started
+done with spect
+classify started
+done with spect
+classify started
+done with spect
+classify started
+done with spect
+classify started
+done with spect
+classify started
+done with spect
+classify started
+done with spect
+classify started
+done with spect
+classify started
+done with spect
+classify started
+done with spect
+classify started
+done with spect
+classify started
+done with spect
+classify started
+done with spect
+classify started
+done with spect
+classify started
+done with spect
+classify started
+done with spect
+classify started
+done with spect
+classify started
+done with spect
+classify started
+done with spect
+classify started
+done with spect
+classify started
+done with spect
+classify started
+done with spect
+classify started
+done with spect
+classify started
+done with spect
+classify started
+done with spect
+classify started
+done with spect
+classify started
+done with spect
+classify started
+done with spect
+classify started
+done with spect
+classify started
+done with spect
+classify started
+done with spect
+classify started
+done with spect
+classify started
+done with spect
+classify started
+done with spect
+classify started
+done with spect
+classify started
+done with spect
+classify started
+done with spect
+classify started
+done with spect
+classify started
+done with spect
+testing starting
+classify started
+done with spect
+classify started
+done with spect
+classify started
+done with spect
+classify started
+done with spect
+classify started
+done with spect
+classify started
+done with spect
+classify started
+done with spect
+classify started
+done with spect
+classify started
+done with spect
+classify started
+done with spect
+classify started
+done with spect
+classify started
+done with spect
+classify started
+done with spect
+classify started
+done with spect
+classify started
+done with spect
+classify started
+done with spect
+classify started
+done with spect
+classify started
+done with spect
+classify started
+done with spect
+classify started
+done with spect
+classify started
+done with spect
+classify started
+done with spect
+classify started
+done with spect
+classify started
+done with spect
+classify started
+done with spect
+classify started
+done with spect
+classify started
+done with spect
+classify started
+done with spect
+classify started
+done with spect
+classify started
+done with spect
+classify started
+done with spect
+testing starting
+classify started
+done with spect
+classify started
+done with spect
+classify started
+done with spect
+classify started
+done with spect
+classify started
+done with spect
+classify started
+done with spect
+classify started
+done with spect
+classify started
+done with spect
+classify started
+done with spect
+classify started
+done with spect
+classify started
+done with spect
+classify started
+done with spect
+classify started
+done with spect
+classify started
+done with spect
+classify started
+done with spect
+classify started
+done with spect
+classify started
+done with spect
+classify started
+done with spect

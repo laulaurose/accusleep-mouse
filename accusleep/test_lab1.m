@@ -1,9 +1,8 @@
 addpath(genpath("/zhome/dd/4/109414/Validationstudy/accusleep_v4/"))
-outdir = '/zhome/dd/4/109414/Validationstudy/accusleep_v4/labdata/models/fixed_n/balanced/lab3/';
-load /zhome/dd/4/109414/Validationstudy/accusleep_v4/labdata/fileList_test_Kornum.mat
-load ~/Validationstudy/accusleep_v4/labdata/models/fixed_n/balanced/lab3/best_model_epoch_5.mat
-
-% load model !
+outdir = '/zhome/dd/4/109414/Validationstudy/accusleep_v4/accusleep/models/balanced/lab1/';
+load /zhome/dd/4/109414/Validationstudy/accusleep_v4/labdata/fileList_test_Alessandro.mat
+%load ~/Validationstudy/accusleep_v4/labdata/models/all_n/balanced/lab1/best_model_epoch_7.mat
+load /zhome/dd/4/109414/Validationstudy/accusleep_v4/accusleep/models/balanced/best_model_epoch_9.mat
 nFiles        = size(fileList,1);
 all_pred      = [];
 all_labels    = [];

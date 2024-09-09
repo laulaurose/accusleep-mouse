@@ -1,5 +1,5 @@
 
-addpath(genpath("/zhome/dd/4/109414/Validationstudy/accusleep_v2/AccuSleep/"))
+addpath(genpath("/zhome/dd/4/109414/Validationstudy/accusleep_v4/AccuSleep/"))
 imageLocation  ='/work3/laurose/accusleep/data/prep/';
 imds           = imageDatastore(imageLocation, 'IncludeSubfolders',true,'LabelSource','foldernames');
 CheckpointPath = '/Users/qgf169/Documents/MATLAB/AccuSleep/dlnetwork_accusleep/';  

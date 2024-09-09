@@ -13,5 +13,5 @@
 
 #ml load matlab/R2022a
 #matlab nodesktop < train_accusleep.m
-/appl/matlab/9150/bin/matlab -nodisplay -batch train_lab2_v2 -logfile myjoboutput.txt
+/appl/matlab/9150/bin/matlab -nodisplay -batch test_lab2 -logfile myjoboutput.txt
 

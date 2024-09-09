@@ -1,9 +1,10 @@
 addpath(genpath("/zhome/dd/4/109414/Validationstudy/accusleep_v4/"))
 %outdir = '/zhome/dd/4/109414/Validationstudy/accusleep_v4/labdata/models/all_n/balanced/lab3/';
-outdir = '/zhome/dd/4/109414/Validationstudy/accusleep_v4/accusleep/models/balanced/lab3/';
+outdir = '/zhome/dd/4/109414/Validationstudy/accusleep_v4/accusleep/models/new/orig/';
 load /zhome/dd/4/109414/Validationstudy/accusleep_v4/labdata/fileList_test_Kornum.mat
 %load ~/Validationstudy/accusleep_v4/labdata/models/all_n/balanced/lab3/best_model_epoch_5.mat
-load /zhome/dd/4/109414/Validationstudy/accusleep_v4/accusleep/models/balanced/best_model_epoch_9.mat
+%load /zhome/dd/4/109414/Validationstudy/accusleep_v4/accusleep/models/balanced/best_model_epoch_9.mat
+load ~/Validationstudy/accusleep_v4/trainedNetworks/trainedNetwork4secEpochs.mat
 
 % load model !
 nFiles        = size(fileList,1);
@@ -47,6 +48,6 @@ for i = 1:nFiles
     end 
 
 end 
-save(strcat(outdir,'labels.mat'),'all_labels')
-save(strcat(outdir,'preds.mat'),'all_pred')
-save(strcat(outdir,'labs.mat'),'all_labs')
+save(strcat(outdir,'kornum_labels.mat'),'all_labels')
+save(strcat(outdir,'kornum_preds.mat'),'all_pred')
+save(strcat(outdir,'kornum_labs.mat'),'all_labs')

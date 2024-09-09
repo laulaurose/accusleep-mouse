@@ -1,0 +1,90 @@
+/zhome/dd/4/109414/.lsbatch/1721643502.22175699.shell: line 1: syntax error near unexpected token `genpath'
+/zhome/dd/4/109414/.lsbatch/1721643502.22175699.shell: line 1: `addpath(genpath("/zhome/dd/4/109414/Validationstudy/accusleep_v4/"))'
+
+------------------------------------------------------------
+Sender: LSF System <lsfadmin@hpc.dtu.dk>
+Subject: Job 22175699: <NONAME> in cluster <dcc> Exited
+
+Job <NONAME> was submitted from host <hpclogin1> by user <laurose> in cluster <dcc> at Mon Jul 22 12:18:22 2024
+Job was executed on host(s) <n-62-31-3>, in queue <hpc>, as user <laurose> in cluster <dcc> at Mon Jul 22 12:18:23 2024
+</zhome/dd/4/109414> was used as the home directory.
+</zhome/dd/4/109414/Validationstudy/accusleep_v4/labdata/fixed_n> was used as the working directory.
+Started at Mon Jul 22 12:18:23 2024
+Terminated at Mon Jul 22 12:18:25 2024
+Results reported at Mon Jul 22 12:18:25 2024
+
+Your job looked like:
+
+------------------------------------------------------------
+# LSBATCH: User input
+addpath(genpath("/zhome/dd/4/109414/Validationstudy/accusleep_v4/"))
+outdir = '/zhome/dd/4/109414/Validationstudy/accusleep_v4/labdata/models/fixed_n/balanced/lab1/';
+load /zhome/dd/4/109414/Validationstudy/accusleep_v4/labdata/fileList_test_Alessandro.mat
+load ~/Validationstudy/accusleep_v4/labdata/models/fixed_n/balanced/lab1/best_model_epoch_8.mat
+
+% load model !
+nFiles        = size(fileList,1);
+all_pred      = [];
+all_labels    = [];
+all_labs      = [];
+
+SR            = 128; 
+epochLen      = 4; 
+epochs        = 9; 
+minBoutLen    = 5; 
+
+allMetrics    = zeros(nFiles, 5, 3); % For n subjects, 5 metrics, 3 classes
+
+for i = 1:nFiles
+    
+    data   = struct;
+    data.a = load(fileList{i,1});
+    data.b = load(fileList{i,2});
+    data.c = load(fileList{i,3});
+    
+    fieldNamesA = fieldnames(data.a);
+    fieldNamesC = fieldnames(data.c);
+    
+    EEG    = data.a.(fieldNamesA{1});
+    EMG    = data.b.EMG; 
+    labels = data.c.(fieldNamesC{1}); 
+    
+    if all([sum(labels==1)>=3, sum(labels==2)>=3, sum(labels==3)>=3])
+        calibrationData = createCalibrationData(EEG, EMG, labels, SR, epochLen);
+        pred = AccuSleep_classify(EEG, EMG, net, SR, epochLen, calibrationData, minBoutLen);
+        
+        if size(pred,1)>1 % if pred is a column vector => row 
+           pred = pred'; 
+        else 
+        end 
+        
+        all_labels = [all_labels labels];
+        all_pred   = [all_pred   pred];
+        all_labs   = [all_labs   fileList{i,1}];
+    end 
+
+end 
+save(strcat(outdir,'labels.mat'),'all_labels')
+save(strcat(outdir,'preds.mat'),'all_pred')
+save(strcat(outdir,'labs.mat'),'all_labs')
+
+(... more ...)
+------------------------------------------------------------
+
+Exited with exit code 2.
+
+Resource usage summary:
+
+    CPU time :                                   0.30 sec.
+    Max Memory :                                 -
+    Average Memory :                             -
+    Total Requested Memory :                     1024.00 MB
+    Delta Memory :                               -
+    Max Swap :                                   -
+    Max Processes :                              -
+    Max Threads :                                -
+    Run time :                                   68 sec.
+    Turnaround time :                            3 sec.
+
+The output (if any) is above this job summary.
+

@@ -1,82 +1,18 @@
 clc; 
 clear all; 
-subsetSize = 2765;
-%subsetSize = 2688;
-addpath(genpath("/zhome/dd/4/109414/Validationstudy/accusleep_v2/"))
 
-imageLocation1 = '/work3/laurose/accusleep/data/labAlessandro/training_images_2024-03-01_12-58-15/';
-imageLocation2 = '/work3/laurose/accusleep/data/labAntoine/training_images_2024-03-01_13-47-42/';
-imageLocation3 = '/work3/laurose/accusleep/data/labKornum/training_images_2024-03-01_14-01-59/';
-imageLocation4 = '/work3/laurose/accusleep/data/labMaiken/training_images_2024-03-01_15-15-46/';
-imageLocation5 = '/work3/laurose/accusleep/data/labSebastian/training_images_2024-03-01_15-21-54/';
+addpath(genpath("/zhome/dd/4/109414/Validationstudy/accusleep_v3/"))
 
-% 1) Load data for each imageLocation ! 
-imds1 = imageDatastore(imageLocation2, 'IncludeSubfolders',true,'LabelSource','foldernames');
-imds2 = imageDatastore(imageLocation3, 'IncludeSubfolders',true,'LabelSource','foldernames');
-imds3 = imageDatastore(imageLocation4, 'IncludeSubfolders',true,'LabelSource','foldernames');
-imds4 = imageDatastore(imageLocation5, 'IncludeSubfolders',true,'LabelSource','foldernames');
-
-disp("done loading imds")
-allFiles1 = imds1.Files;
-allFiles2 = imds2.Files;
-allFiles3 = imds3.Files;
-allFiles4 = imds4.Files;
-
-% Randomly sampling;
-randomIndices1 = randperm(length(allFiles1), subsetSize);
-randomIndices2 = randperm(length(allFiles2), subsetSize);
-randomIndices3 = randperm(length(allFiles3), subsetSize);
-randomIndices4 = randperm(length(allFiles4), subsetSize);
-
-% Split into training and validation set 
-train_1 = allFiles1(randomIndices1(1:floor(subsetSize*0.8)));
-train_2 = allFiles2(randomIndices2(1:floor(subsetSize*0.8)));
-train_3 = allFiles3(randomIndices3(1:floor(subsetSize*0.8)));
-train_4 = allFiles4(randomIndices4(1:floor(subsetSize*0.8)));
-
-val_1   = allFiles1(randomIndices1(floor(subsetSize*0.8)+1:end));
-val_2   = allFiles2(randomIndices2(floor(subsetSize*0.8)+1:end));
-val_3   = allFiles3(randomIndices3(floor(subsetSize*0.8)+1:end));
-val_4   = allFiles4(randomIndices4(floor(subsetSize*0.8)+1:end));
-
-imdsTrain1      = imageDatastore(train_1, 'Labels', imds1.Labels(randomIndices1(1:floor(subsetSize*0.8))));
-imdsTrain2      = imageDatastore(train_2, 'Labels', imds2.Labels(randomIndices2(1:floor(subsetSize*0.8))));
-imdsTrain3      = imageDatastore(train_3, 'Labels', imds3.Labels(randomIndices3(1:floor(subsetSize*0.8))));
-imdsTrain4      = imageDatastore(train_4, 'Labels', imds4.Labels(randomIndices4(1:floor(subsetSize*0.8))));
-
-imdsVal1        = imageDatastore(val_1, 'Labels', imds1.Labels(randomIndices1(floor(subsetSize*0.8)+1:end)));
-imdsVal2        = imageDatastore(val_2, 'Labels', imds2.Labels(randomIndices2(floor(subsetSize*0.8)+1:end)));
-imdsVal3        = imageDatastore(val_3, 'Labels', imds3.Labels(randomIndices3(floor(subsetSize*0.8)+1:end)));
-imdsVal4        = imageDatastore(val_4, 'Labels', imds4.Labels(randomIndices4(floor(subsetSize*0.8)+1:end)));
-
-
-disp("done splitting it into train and val")
-
-allTrainFiles  = [imdsTrain1.Files; imdsTrain2.Files; imdsTrain3.Files; imdsTrain4.Files];
-allTrainLabels = [imdsTrain1.Labels; imdsTrain2.Labels; imdsTrain3.Labels; imdsTrain4.Labels];
-
-allValFiles  = [imdsVal1.Files; imdsVal2.Files; imdsVal3.Files; imdsVal4.Files];
-allValLabels = [imdsVal1.Labels; imdsVal2.Labels; imdsVal3.Labels; imdsVal4.Labels];
-
-imdsTrain      = imageDatastore(allTrainFiles, 'Labels', allTrainLabels);
-imdsValidation = imageDatastore(allValFiles, 'Labels', allValLabels);
-
-disp("done combining imds from each lab into train and val")
 
 %%%%%%%%%----------------------------------------%%%%%%%%%----------------------------------------%%%%%%%%%----------------------------------------
 
-CheckpointPath = '/zhome/dd/4/109414/Validationstudy/accusleep_v2/AccuSleep/accusleep/models/balanced/';  
-%CheckpointPath  = '/Users/qgf169/Documents/MATLAB/AccuSleep/dlnetwork_accusleep/fixed_n/';
-modeltype_     = "lab"; 
-isWCE_         = 1;
-fold           = '1'
-w_vec = [2,3,4,5];
-[net]= train_dlnetwork(imdsTrain,imdsValidation,CheckpointPath,modeltype_,isWCE_,fold,w_vec); 
+%CheckpointPath = '/zhome/dd/4/109414/Validationstudy/accusleep_v2/AccuSleep/accusleep/models/balanced/';  
+CheckpointPath  = '/zhome/dd/4/109414/Validationstudy/accusleep_v3/labdata/models/all_n/balanced/lab4/';
 
-save('/zhome/dd/4/109414/Validationstudy/accusleep_v2/AccuSleep/labdata/models/fixed_n/balanced/lab1/net.mat', 'net');
-%load /zhome/dd/4/109414/Validationstudy/accusleep_v2/AccuSleep/labdata/models/fixed_n/balanced/lab1/net.mat
-outdir = '/zhome/dd/4/109414/Validationstudy/accusleep_v2/AccuSleep/labdata/models/fixed_n/balanced/lab1/';
-load fileList_test_Alessandro.mat
+load /zhome/dd/4/109414/Validationstudy/accusleep_v3/labdata/models/all_n/balanced/lab4/best_model_epoch_9.mat
+outdir = '/zhome/dd/4/109414/Validationstudy/accusleep_v3/labdata/models/all_n/balanced/lab4/';
+load fileList_test_Maiken.mat
+
 
 nFiles        = size(fileList,1);
 all_pred      = [];
@@ -164,9 +100,6 @@ T = array2table(all_metrics, 'VariableNames', {'W_recall', 'W_precision', 'W_f1s
                                                'N_recall', 'N_precision', 'N_f1score','N_accuracy','N_baccuracy',...
                                                'R_recall', 'R_precision', 'R_f1score','R_accuracy','R_baccuracy'});
 
-disp(all_pred)
-disp(all_labels)
-disp(T)
 
 writetable(T, strcat(outdir,'mytable.csv'));
 save(strcat(outdir,'predictions_f1.mat'), 'all_pred')
@@ -199,4 +132,3 @@ function [recall,precision, f1score,accuracy,b_accuracy] = cal_metrics(labels,pr
     
 
 end
-

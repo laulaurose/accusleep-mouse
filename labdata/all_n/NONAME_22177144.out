@@ -1,0 +1,38 @@
+/bin/bash: ./submit_job_1.sh: Permission denied
+
+------------------------------------------------------------
+Sender: LSF System <lsfadmin@hpc.dtu.dk>
+Subject: Job 22177144: <NONAME> in cluster <dcc> Exited
+
+Job <NONAME> was submitted from host <hpclogin1> by user <laurose> in cluster <dcc> at Mon Jul 22 14:27:42 2024
+Job was executed on host(s) <n-62-31-3>, in queue <hpc>, as user <laurose> in cluster <dcc> at Mon Jul 22 14:27:43 2024
+</zhome/dd/4/109414> was used as the home directory.
+</zhome/dd/4/109414/Validationstudy/accusleep_v4/labdata/all_n> was used as the working directory.
+Started at Mon Jul 22 14:27:43 2024
+Terminated at Mon Jul 22 14:27:44 2024
+Results reported at Mon Jul 22 14:27:44 2024
+
+Your job looked like:
+
+------------------------------------------------------------
+# LSBATCH: User input
+submit_job_1.sh
+------------------------------------------------------------
+
+Exited with exit code 126.
+
+Resource usage summary:
+
+    CPU time :                                   0.28 sec.
+    Max Memory :                                 -
+    Average Memory :                             -
+    Total Requested Memory :                     1024.00 MB
+    Delta Memory :                               -
+    Max Swap :                                   -
+    Max Processes :                              -
+    Max Threads :                                -
+    Run time :                                   74 sec.
+    Turnaround time :                            2 sec.
+
+The output (if any) is above this job summary.
+

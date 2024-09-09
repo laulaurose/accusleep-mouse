@@ -207,6 +207,10 @@ legend('Training FScore', 'Validation FScore', 'Location', 'Best');
 grid on;
 hold off;
 saveas(fig, strcat(CheckpointPath,'TrainingAndValidationLossPlot.png'));
+save(strcat(CheckpointPath,'trainingIterations.mat'), 'trainingIterations')
+save(strcat(CheckpointPath,'validationIterations.mat'), 'validationIterations')
+save(strcat(CheckpointPath,'validationLosses.mat'), 'validationLosses')
+save(strcat(CheckpointPath,'trainingLosses.mat'), 'trainingLosses')
 
 
 function p_f = file2lab(p,modeltype_)
